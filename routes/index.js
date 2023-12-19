@@ -4,7 +4,7 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Mini Message Board', messages });
+  res.render('index', { title: 'Welcome', messages });
 });
 
 router.get('/new', (req, res) => {
