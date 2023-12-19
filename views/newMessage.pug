@@ -1,0 +1,14 @@
+extends layout
+
+block content 
+    main
+        .title 
+            h2 Send Message
+        form(method="post")
+            .form-group 
+                label(for="username") Your username
+                input(type="text", name="username", id="username", minlength="3" maxlength="12" placeholder="hunter2", required)
+            .form-group 
+                label(for="msg") Your Message
+                textarea(required name="msg" id="msg" cols="30" rows="10")
+                button Send

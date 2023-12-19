@@ -8,7 +8,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/new', (req, res) => {
-  res.render('new', { title: 'New Message | Mini Message Board' });
+  res.render('newMessage', { title: 'New Message' });
 });
 
 router.post('/new', (req, res) => {
