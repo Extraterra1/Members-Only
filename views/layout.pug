@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title #{title} | Stocky McStockit
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    nav#header
+        h1
+            a(href='/')
+        aside
+            a(href='/new')
+                span Submit Message
+            .socials
+                ion-icon(name='logo-twitter')
+                ion-icon(name='logo-github')
+    block content
+    script(type='module' src='https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js')
+    script(nomodule='' src='https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js')
