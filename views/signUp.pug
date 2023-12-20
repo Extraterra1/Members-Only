@@ -7,14 +7,24 @@ block content
         form(method="post")
             .form-group 
                 label(for="name") Name
-                input(type="text", name="name", id="name", minlength="3" placeholder="Joe", required)
+                if user !== undefined
+                    input(type="text", name="name", id="name", minlength="3" placeholder="Joe", required, value=user.name)
+                else 
+                    input(type="text", name="name", id="name", minlength="3" placeholder="Joe", required)
             .form-group
                 label(for="email") Email
-                input(type="email", name="email", id="email", minlength="5"  placeholder="hunter2@gmail.com", required)
+                if user !== undefined
+                    input(type="email", name="email", id="email", minlength="5"  placeholder="hunter2@gmail.com", required, value=user.email)
+                else 
+                    input(type="email", name="email", id="email", minlength="5"  placeholder="hunter2@gmail.com", required)
             .form-group 
                 label(for="password") Password
                 input(type="password", name="password", id="password",minLength="6" required)
             .form-group 
                 label(for="passwordConfirm") Confirm Password
                 input(type="password", name="passwordConfirm", id="passwordConfirm",minLength="6" required)
+            if err !== undefined
+                ul.text-danger
+                    each el in err 
+                        li=el.msg
             button.btn-success Send

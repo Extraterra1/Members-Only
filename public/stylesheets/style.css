@@ -165,3 +165,7 @@ button {
   background-color: var(--success);
   color: var(--light);
 }
+
+.text-danger {
+  color: var(--danger);
+}
