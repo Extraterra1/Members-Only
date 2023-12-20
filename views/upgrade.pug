@@ -8,5 +8,12 @@ block content
     form(method="post")
       .form-group
         label(for="password") Super Secret Upgrade Password
+          span (Just hover this)
         input#password(type="password", name="password")
+
+      if err !== undefined
+        ul.text-danger
+          each el in err 
+            li= el.msg
+
       button.btn-success Upgrade Account

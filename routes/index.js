@@ -117,9 +117,26 @@ router.post(
   }),
 );
 
-router.get("/upgrade", (req, res) => {
+router.get("/upgrade", isLoggedIn, (req, res) => {
   res.render("upgrade", { title: "Upgrade Account" });
 });
+
+router.post(
+  "/upgrade",
+  body("password", "Wrong password")
+    .trim()
+    .custom((val) => +val === 1234),
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty())
+      return res.render("upgrade", {
+        title: "Upgrade Account",
+        err: errors.array(),
+      });
+    await User.findByIdAndUpdate(req.user.id, { role: "member" });
+    res.redirect("/newMessage");
+  }),
+);
 
 // const messages = [
 //   {
