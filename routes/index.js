@@ -7,7 +7,7 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: 'Welcome', messages });
 });
 
-router.get('/new', (req, res) => {
+router.get('/newMessage', (req, res) => {
   res.render('newMessage', { title: 'New Message' });
 });
 
@@ -18,6 +18,10 @@ router.post('/new', (req, res) => {
     added: moment().format('ddd, MMM Do YYYY (hh:mm)')
   });
   res.redirect('/');
+});
+
+router.get('/signUp', (req, res) => {
+  res.render('signUp');
 });
 
 const messages = [

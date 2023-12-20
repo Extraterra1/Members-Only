@@ -160,3 +160,8 @@ button {
   outline: none;
   color: var(--dark);
 }
+
+.btn-success {
+  background-color: var(--success);
+  color: var(--light);
+}
