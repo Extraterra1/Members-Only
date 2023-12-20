@@ -1,6 +1,11 @@
 const express = require('express');
 const moment = require('moment');
 const router = express.Router();
+const { body, validationResult } = require('express-validator');
+const asyncHandler = require('express-async-handler');
+const bcrypt = require('bcryptjs');
+
+const User = require('../models/userModel');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -21,8 +26,35 @@ router.post('/new', (req, res) => {
 });
 
 router.get('/signUp', (req, res) => {
-  res.render('signUp');
+  res.render('signUp', { title: 'Sign Up' });
 });
+
+router.post(
+  '/signUp',
+  body('name')
+    .trim()
+    .isAlphanumeric()
+    .withMessage('Name must only contain letters and numbers')
+    .isLength({ min: 3 })
+    .withMessage('Name must be at least 3 characters long'),
+  body('email', 'Invalid Email').trim().isEmail(),
+  body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long'),
+  body('passwordConfirm', 'Passwords do not match').custom((val, { req }) => {
+    return val === req.body.password;
+  }),
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const newUser = new User({ name: req.body.name, email: req.body.email, password: hashedPassword });
+    if (!errors.isEmpty()) return res.render('signUp', { user: newUser, err: errors.array() });
+
+    await newUser.save();
+    req.login(newUser, (err) => {
+      if (err) return next(err);
+      return res.redirect('/?logged');
+    });
+  })
+);
 
 const messages = [
   {

@@ -13,8 +13,8 @@ block content
                 input(type="email", name="email", id="email", minlength="5"  placeholder="hunter2@gmail.com", required)
             .form-group 
                 label(for="password") Password
-                input(type="password", name="password", id="password", required)
+                input(type="password", name="password", id="password",minLength="6" required)
             .form-group 
                 label(for="passwordConfirm") Confirm Password
-                input(type="password", name="passwordConfirm", id="passwordConfirm", required)
+                input(type="password", name="passwordConfirm", id="passwordConfirm",minLength="6" required)
             button.btn-success Send
