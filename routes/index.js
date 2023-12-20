@@ -117,6 +117,10 @@ router.post(
   }),
 );
 
+router.get("/upgrade", (req, res) => {
+  res.render("upgrade", { title: "Upgrade Account" });
+});
+
 // const messages = [
 //   {
 //     text: "Hey how you doing",

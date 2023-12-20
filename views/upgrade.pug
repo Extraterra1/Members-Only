@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  main
+    .title.upgrade-title
+      h2 Upgrade Account
+      p You need to be a member to submit messages, you are currently a guest.
+    form(method="post")
+      .form-group
+        label(for="password") Super Secret Upgrade Password
+        input#password(type="password", name="password")
+      button.btn-success Upgrade Account

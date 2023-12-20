@@ -181,3 +181,9 @@ a ion-icon {
 a ion-icon:hover {
   color: var(--gray-200);
 }
+
+.upgrade-title {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
