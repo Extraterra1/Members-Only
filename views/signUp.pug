@@ -1,30 +1,66 @@
 extends layout
 
-block content 
-    main
-        .title 
-            h2 Sign Up
-        form(method="post")
-            .form-group 
-                label(for="name") Name
-                if user !== undefined
-                    input(type="text", name="name", id="name", minlength="3" placeholder="Joe", required, value=user.name)
-                else 
-                    input(type="text", name="name", id="name", minlength="3" placeholder="Joe", required)
-            .form-group
-                label(for="email") Email
-                if user !== undefined
-                    input(type="email", name="email", id="email", minlength="5"  placeholder="hunter2@gmail.com", required, value=user.email)
-                else 
-                    input(type="email", name="email", id="email", minlength="5"  placeholder="hunter2@gmail.com", required)
-            .form-group 
-                label(for="password") Password
-                input(type="password", name="password", id="password",minLength="6" required)
-            .form-group 
-                label(for="passwordConfirm") Confirm Password
-                input(type="password", name="passwordConfirm", id="passwordConfirm",minLength="6" required)
-            if err !== undefined
-                ul.text-danger
-                    each el in err 
-                        li=el.msg
-            button.btn-success Send
+block content
+  main
+    .title
+      h2 Sign Up
+    form(method="post")
+      .form-group
+        label(for="name") Name
+        if user !== undefined
+          input#name(
+            type="text",
+            name="name",
+            minlength="3",
+            placeholder="Joe",
+            required,
+            value=user.name
+          )
+        else
+          input#name(
+            type="text",
+            name="name",
+            minlength="3",
+            placeholder="Joe",
+            required
+          )
+      .form-group
+        label(for="email") Email
+        if user !== undefined
+          input#email(
+            type="email",
+            name="email",
+            minlength="5",
+            placeholder="hunter2@gmail.com",
+            required,
+            value=user.email
+          )
+        else
+          input#email(
+            type="email",
+            name="email",
+            minlength="5",
+            placeholder="hunter2@gmail.com",
+            required
+          )
+      .form-group
+        label(for="password") Password
+        input#password(
+          type="password",
+          name="password",
+          minLength="6",
+          required
+        )
+      .form-group
+        label(for="passwordConfirm") Confirm Password
+        input#passwordConfirm(
+          type="password",
+          name="passwordConfirm",
+          minLength="6",
+          required
+        )
+      if err !== undefined
+        ul.text-danger
+          each el in err 
+            li= el.msg
+      button.btn-success Send

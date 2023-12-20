@@ -1,13 +1,14 @@
 extends layout
 
-block content 
-    main
-        .title 
-            h2 Messages 
-        .msg-grid
-            each el in messages 
-                .msg 
-                    .msg-header
-                        span=el.user 
-                        |  on #{el.added}
-                    .msg-content=el.text
+block content
+  main
+    .title
+      h2 Messages
+    .msg-grid
+      each el in messages 
+        .msg
+          .msg-header
+            span= el.user
+            |
+            | on #{ el.added }
+          .msg-content= el.text

@@ -10,10 +10,10 @@ const User = require('../models/userModel');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Welcome', messages });
+  res.render('index', { title: 'Welcome', messages, user: req.user });
 });
 
-router.get('/newMessage', (req, res) => {
+router.get('/newMessage', isLoggedIn, (req, res) => {
   res.render('newMessage', { title: 'New Message' });
 });
 
