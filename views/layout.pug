@@ -10,8 +10,13 @@ html
       aside
         if user !== undefined
           h2= user.name
-        a(href="/newMessage")
-          span Submit Message
+          a(href="/newMessage")
+            span Submit Message
+        else
+          a(href="/login") 
+            span Login
+          a(href="/signUp") 
+            span Sign Up
         .socials
           ion-icon(name="logo-twitter")
           ion-icon(name="logo-github")

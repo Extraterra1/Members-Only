@@ -16,4 +16,8 @@ block content
       .form-group
         label(for="password") Password
         input#password(required, name="password", type="password")
+        if err !== undefined
+          ul.text-danger
+            each el in err 
+              li= el
         button.btn-success Send

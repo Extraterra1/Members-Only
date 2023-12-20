@@ -7,6 +7,7 @@ const bcrypt = require("bcryptjs");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
 const User = require("../models/userModel");
+const passport = require("passport");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -27,10 +28,23 @@ router.post("/new", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  res.render("login", { title: "Log In" });
+  if (req.isAuthenticated()) return res.redirect("/");
+  const err = req.session.messages;
+  req.session.messages = [];
+  res.render("login", { title: "Log In", err });
 });
 
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/?good",
+    failureMessage: true,
+    failureRedirect: "/login",
+  }),
+);
+
 router.get("/signUp", (req, res) => {
+  if (req.isAuthenticated()) return res.redirect("/");
   res.render("signUp", { title: "Sign Up" });
 });
 
