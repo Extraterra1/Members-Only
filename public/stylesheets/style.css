@@ -28,7 +28,7 @@
 
 body {
   font:
-    14px 'Lucida Grande',
+    14px "Lucida Grande",
     Helvetica,
     Arial,
     sans-serif;
@@ -147,7 +147,6 @@ form button {
 }
 
 form button:hover {
-  background-color: var(--light);
   outline: 1px solid var(--dark);
 }
 

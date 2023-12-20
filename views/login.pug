@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  main
+    .title
+      h2 Login
+    form(method="post")
+      .form-group
+        label(for="email") Email
+        input#email(
+          type="email",
+          name="email",
+          placeholder="hunter2@gmail.com",
+          required
+        )
+      .form-group
+        label(for="password") Password
+        input#password(required, name="password", type="password")
+        button.btn-success Send
