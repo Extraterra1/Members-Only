@@ -9,7 +9,7 @@ block content
         .msg
           if user !== undefined
             .msg-header
-              span= el.user
+              span= el.author.name
               |
               | on #{ el.added }
-          .msg-content= el.text
+          .msg-content= el.msg
