@@ -4,6 +4,7 @@ const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcryptjs');
+const isLoggedIn = require('../middleware/isLoggedIn');
 
 const User = require('../models/userModel');
 
@@ -46,7 +47,7 @@ router.post(
     const errors = validationResult(req);
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const newUser = new User({ name: req.body.name, email: req.body.email, password: hashedPassword });
-    if (!errors.isEmpty()) return res.render('signUp', { user: newUser, err: errors.array() });
+    if (!errors.isEmpty()) return res.render('signUp', { title: 'Sign Up', user: newUser, err: errors.array() });
 
     await newUser.save();
     req.login(newUser, (err) => {
