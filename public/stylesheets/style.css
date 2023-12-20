@@ -168,3 +168,16 @@ button {
 .text-danger {
   color: var(--danger);
 }
+
+aside a {
+  display: flex;
+  align-items: center;
+}
+
+a ion-icon {
+  font-size: 3rem;
+}
+
+a ion-icon:hover {
+  color: var(--gray-200);
+}

@@ -43,6 +43,13 @@ router.post(
   }),
 );
 
+router.get("/logout", (req, res, next) => {
+  req.logOut((err) => {
+    if (err) return next(err);
+    return res.redirect("/");
+  });
+});
+
 router.get("/signUp", (req, res) => {
   if (req.isAuthenticated()) return res.redirect("/");
   res.render("signUp", { title: "Sign Up" });
