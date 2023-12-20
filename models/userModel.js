@@ -9,6 +9,7 @@ const validateEmail = (email) => {
 const userSchema = new Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, minLength: 5, unique: true, validate: [validateEmail, 'Please enter a valid email address'] },
+  password: { type: String, required: true },
   role: { type: String, enum: ['guest', 'member', 'admin'], default: 'guest' }
 });
 
