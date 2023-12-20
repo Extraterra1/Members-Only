@@ -13,7 +13,7 @@ const passport = require("passport");
 router.get(
   "/",
   asyncHandler(async (req, res, next) => {
-    const messages = await Post.find().sort({ added: 1 }).populate("author");
+    const messages = await Post.find().sort({ added: -1 }).populate("author");
     res.render("index", { title: "Welcome", messages, user: req.user });
   }),
 );
@@ -135,6 +135,16 @@ router.post(
       });
     await User.findByIdAndUpdate(req.user.id, { role: "member" });
     res.redirect("/newMessage");
+  }),
+);
+
+router.get(
+  "/delete/:id",
+  isLoggedIn,
+  asyncHandler(async (req, res, next) => {
+    if (req.user.role !== "admin") return res.redirect("/");
+    await Post.findByIdAndDelete(req.params.id);
+    res.redirect("/");
   }),
 );
 
