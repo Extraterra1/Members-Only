@@ -9,7 +9,12 @@ block content
         .msg
           if user !== undefined
             .msg-header
-              span= el.author.name
-              |
-              | on #{ el.formattedAdded }
+              .user
+                span= el.author.name
+                |
+                | on #{ el.formattedAdded }
+              if user.role === 'admin'
+                span
+                  a(href=`/delete/${el._id}`)
+                    ion-icon(name="trash")
           .msg-content= el.msg

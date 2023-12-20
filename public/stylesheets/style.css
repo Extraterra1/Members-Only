@@ -119,8 +119,22 @@ main .title {
   margin-left: 2rem;
 }
 
+.msg-header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .msg-header span {
   font-weight: 700;
+}
+
+.msg-header ion-icon {
+  font-size: 2rem;
+  transition: all 0.3s ease;
+}
+
+.msg-header ion-icon:hover {
+  color: var(--danger);
 }
 
 form {
