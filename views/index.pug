@@ -7,8 +7,9 @@ block content
     .msg-grid
       each el in messages 
         .msg
-          .msg-header
-            span= el.user
-            |
-            | on #{ el.added }
+          if user !== undefined
+            .msg-header
+              span= el.user
+              |
+              | on #{ el.added }
           .msg-content= el.text
