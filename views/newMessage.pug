@@ -6,16 +6,40 @@ block content
       h2 Send Message
     form(method="post")
       .form-group
-        label(for="username") Your username
+        label(for="username") Your Name
         input#username(
           type="text",
           name="username",
-          minlength="3",
-          maxlength="12",
           placeholder="hunter2",
+          value=user.name,
+          disabled,
           required
         )
       .form-group
+        label(for="username") Title
+        if post === undefined
+          input#title(
+            type="text",
+            name="title",
+            placeholder="Greetings",
+            required
+          )
+        else
+          input#title(
+            type="text",
+            name="title",
+            placeholder="Greetings",
+            value=post.title,
+            required
+          )
+      .form-group
         label(for="msg") Your Message
-        textarea#msg(required, name="msg", cols="30", rows="10")
+        if post === undefined
+          textarea#msg(required, name="msg", cols="30", rows="10")
+        else
+          textarea#msg(required, name="msg", cols="30", rows="10")= post.msg
+        if err !== undefined
+          ul.text-danger
+            each el in err 
+              li= el.msg
         button Send
