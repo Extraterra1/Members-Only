@@ -10,7 +10,7 @@ const postSchema = new Schema({
 });
 
 postSchema.virtual("formattedAdded").get(function () {
-  return moment(this.added).format("ddd, MMM Do");
+  return moment(this.added).format("ddd, MMM Do YYYY");
 });
 
 module.exports = mongoose.model("Post", postSchema);
