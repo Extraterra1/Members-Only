@@ -3,6 +3,7 @@
 Welcome to the Members Only app! This simple message board application is built using Node.js, Express, and MongoDB. Users can register, log in, post messages, and perform other actions based on their role.
 
 Deployed on [https://project-members-only.fly.dev](https://project-members-only.fly.dev/)
+![website snapshot](https://raw.githubusercontent.com/Extraterra1/Members-Only/main/website-snapshot.png)
 
 ## Table of Contents
 
